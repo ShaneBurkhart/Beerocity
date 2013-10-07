@@ -8,11 +8,14 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
-  %body{:class => "#{controller_name} #{action_name}"}
-    .navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
+  %body{:class => "#{controller_name} #{action_name}" + (current_page?(root_path) == true ? "" : "body_space")}
+    - if current_page? root_path
+      = render "layouts/mega_header"
+    - else
+      .navbar.navbar-fixed-top
+        %nav.navbar-inner
+          .container
+            = render 'layouts/navigation'
     #main{:role => "main"}
       .container
         .content
