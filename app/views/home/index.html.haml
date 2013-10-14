@@ -1,25 +1,66 @@
-#welcome.hero-unit.span7
-  %h1 Membership Site
-  %h3 Learn to build a successful subscription site.
-.row.span8.plans
-  .span2.well
-    .plan
-      %h2 Silver
-    %ul.unstyled
-      %li One lesson a month
-    %h3 $9/month
-    = link_to 'Subscribe', new_user_registration_path(:plan => 'silver'), :class => 'btn btn-primary'
-  .span2.well.featured
-    .plan.featured-plan
-      %h2 Gold
-    %ul.unstyled
-      %li Ten lessons a month
-    %h3 $19/month
-    = link_to 'Subscribe', new_user_registration_path(:plan => 'gold'), :class => 'btn btn-primary'
-  .span2.well
-    .plan
-      %h2 Platinum
-    %ul.unstyled
-      %li Thirty lessons a month
-    %h3 $29/month
-    = link_to 'Subscribe', new_user_registration_path(:plan => 'platinum'), :class => 'btn btn-primary'
+.container
+  %h2.text-center.tag-line Beerocity wants to make it easy for you to brew and try all kinds of beer!
+
+  .row.marketing-container
+    .span6
+      %p.info Every month we will send you the ingredients for a new recipe to brew. You no longer need waste time searching for new and unique recipes. We do that for you!
+
+      %p.info We know that everyone brews differently.  Some like all grain and some like extract.  We let you pick which one you want!  When you sign up you will have the option to select which method you prefer.
+
+      %p.info Most recipes are tailored to a 5 gallon batch but we understand not everyone brews that much at once.  We allow you to select the amount you want to brew and scale the recipe accordingly.
+
+    .span6
+      %p.lead What's included:
+      %ul
+        %li Recipe
+        %li Malt extract or grains depending on your preference.
+        %li Hops
+        %li Brewer's Yeast
+      = link_to "Get Brewing Now!", "#", class: "btn btn-info btn-large"
+
+  %hr
+
+  .row.marketing-container
+    %h2 All Grain Ingredients
+    .span4.text-center
+      %h3.text-center 3 Gallon
+      %p.huge-money.text-center
+        %span.little-dollar-sign $
+        30
+      = link_to "Start Now!", "#", class: "btn btn-large btn-success"
+    .span4.text-center
+      %h3.text-center 5 Gallon
+      %p.huge-money.text-center
+        %span.little-dollar-sign $
+        50
+      = link_to "Start Now!", "#", class: "btn btn-large btn-warning"
+    .span4.text-center
+      %h3.text-center 10 Gallon
+      %p.huge-money.text-center
+        %span.little-dollar-sign $
+        100
+      = link_to "Start Now!", "#", class: "btn btn-large btn-info"
+
+%hr
+
+  .row.marketing-container
+    %h2 Malt Extract Ingredients
+    .span4.text-center
+      %h3.text-center 3 Gallon
+      %p.huge-money.text-center
+        %span.little-dollar-sign $
+        30
+      = link_to "Start Now!", "#", class: "btn btn-large btn-success"
+    .span4.text-center
+      %h3.text-center 5 Gallon
+      %p.huge-money.text-center
+        %span.little-dollar-sign $
+        50
+      = link_to "Start Now!", "#", class: "btn btn-large btn-warning"
+    .span4.text-center
+      %h3.text-center 10 Gallon
+      %p.huge-money.text-center
+        %span.little-dollar-sign $
+        100
+      = link_to "Start Now!", "#", class: "btn btn-large btn-info"
+

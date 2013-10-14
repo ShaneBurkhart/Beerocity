@@ -3,6 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.marketing-container{
+  margin-bottom: 50px;
+
+  p.info, li{
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+
+}
+
+.tag-line{
+  margin: 40px 0px 80px;
+}
+
 .header{
   position: relative;
   top: 0;
@@ -29,9 +43,22 @@
   }
 }
 
+.huge-money{
+  font-size: 8em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.little-dollar-sign{
+  font-weight: bold;
+  font-size: 40px;
+  margin-right: -30px;
+  margin-left: -23px;
+}
+
 .navigation-container{
-  margin-top: 154px;
-  background-color: rgba(0, 0, 0, .65);
+  margin-top: 134px;
+  background-color: rgba(0, 0, 0, .83);
   color: white;
   text-align: center;
   padding: 26px 0;
@@ -42,8 +69,8 @@
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
-    width: 250px;
-    height: 69px;
+    width: 434px;
+    height: 120px;
   }
 
   ul{
