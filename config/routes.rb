@@ -1,4 +1,8 @@
 Beerocity::Application.routes.draw do
+  get "faq/index"
+
+  get "about/index"
+
   mount StripeEvent::Engine => '/stripe'
   get "content/gold"
   get "content/silver"
