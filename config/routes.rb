@@ -18,8 +18,8 @@ Beerocity::Application.routes.draw do
     put 'update_card', :to => 'registrations#update_card'
   end
 
-  get "faq/index"
-  get "about/index"
+  get "faq" => "faq#index"
+  get "about" => "about#index"
 
   resources :users
 end
