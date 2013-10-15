@@ -1,18 +1,12 @@
 = link_to "Beerocity", root_path, :class => 'brand'
 %ul.nav.pull-right
-  %li
-    = link_to "FAQ", faq_path
-  %li
-    = link_to "About", about_path
-  %li
-    = link_to "Pricing", root_path
+  = nav_link "FAQ", faq_path
+  = nav_link "About", about_path
+  = nav_link "Pricing", root_path
 
   - if user_signed_in?
-    %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+    = nav_link "Logout", destroy_user_session_path, :method=>'delete'
   - else
-    %li
-      = link_to 'Login', new_user_session_path
+    = nav_link "Login", new_user_session_path
   - if user_signed_in?
-    %li
-      = link_to 'Edit account', edit_user_registration_path
+    = nav_link "Edit Account", edit_user_registration_path
