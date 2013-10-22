@@ -3,11 +3,13 @@ class UsersController < ApplicationController
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
+
     @users = User.all
   end
 
   def update
     authorize! :update, @user, :message => 'Not authorized as an administrator.'
+
     @user = User.find(params[:id])
     role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
     params[:user] = params[:user].except(:role_ids)
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
 
   def destroy
     authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
+
     user = User.find(params[:id])
     unless user == current_user
       user.destroy
