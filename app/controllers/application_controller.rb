@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       when 'admin'
         users_path
       when 'basic'
-        content_silver_path
+
       else
         root_path
     end

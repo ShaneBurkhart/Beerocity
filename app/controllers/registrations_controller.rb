@@ -30,10 +30,12 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
-  def build_resource(*args)
-    super
-    if params[:plan]
-      resource.add_role(params[:plan])
+
+    def build_resource(*args)
+      super
+      if params[:plan]
+        resource.add_role(params[:plan])
+      end
     end
-  end
+
 end
