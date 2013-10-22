@@ -4,6 +4,11 @@ Beerocity::Application.routes.draw do
 
   get "content" => "content#basic"
 
+  get "team" => "about#index"
+  get "faq" => "faq#index"
+  get "contact" => "faq#index"
+  get "tos" => "faq#index"
+
   authenticated :user do
     root :to => 'home#index'
   end

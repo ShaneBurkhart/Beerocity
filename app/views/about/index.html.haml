@@ -1,2 +1,25 @@
-%h1 About#index
-%p Find me in app/views/about/index.html.haml
+- content_for :title, "About Us"
+.container
+  .section
+    .container
+      %h2 The Team
+      %hr
+  .container
+    .row
+      .span3
+        = image_tag @shane_url, class: "gravatar"
+      .span9
+        %h3 Shane Burkhart
+        %p.lead.muted Co-Founder
+        %p Hi, my name is Shane Burkhart and I am a computer engineeringcomputer science double major at the Missouri University of Science and Technology.  Most of my time is spent coding, working on computers, or looking for my next startup idea.  My goal is to use software and computers to solve as many real world problems as I can.
+    %hr
+
+  .container
+    .row
+      .span9
+        %h3 Ryan Endacott
+        %p.lead.muted Co-Founder
+        %p
+      .span3
+        = image_tag @ryan_url, class: "gravatar"
+
