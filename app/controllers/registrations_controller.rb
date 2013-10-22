@@ -1,14 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    @plan = params[:plan]
-    if @plan && ENV["ROLES"].include?(@plan) && @plan != "admin"
-      super
-    else
-      redirect_to root_path, :notice => 'Please select a subscription plan below.'
-    end
+    @plan = "basic"
+    super
   end
 
+=begin
   def update_plan
     @user = current_user
     role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
@@ -19,6 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
       render :edit
     end
   end
+=end
 
   def update_card
     @user = current_user
