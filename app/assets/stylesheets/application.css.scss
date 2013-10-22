@@ -65,3 +65,13 @@ html, body {
     margin-bottom: 15px;
   }
 }
+
+.site-logo{
+  text-indent: -99999em;
+  background-image: image-url("site_logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  width: 184px;
+  height: 40px;
+}
