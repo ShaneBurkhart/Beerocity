@@ -13,7 +13,7 @@
       - if current_page? root_path
         = render "layouts/mega_header"
       - else
-        .navbar.navbar-static-top.navbar-inverse
+        .navbar.navbar-static-top.navbar-inverse.navbar-space
           %nav.navbar-inner
             .container
               = render 'layouts/navigation'
@@ -31,6 +31,7 @@
           .span12
             %ul
               %li= link_to "Blog", "http://blog.homebrewster.com"
+              %li= link_to "FAQ", faq_path
               %li= link_to "Meet the Team", team_path
               %li= link_to "Contact", contact_path
               %li= link_to "Terms of Service", tos_path
