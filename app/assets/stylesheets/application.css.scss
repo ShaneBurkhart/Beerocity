@@ -27,14 +27,34 @@ html, body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by it's height */
-  margin: 0 auto -200px;
+  margin: 0 auto -60px;
 }
 
 /* Set the fixed height of the footer here */
 #push, #footer {
-  height: 200px;
+  height: 60px;
 }
 
 #footer {
-  background-color: #444;
+  padding-top: 15px;
+  color: #f3f3f3;
+
+  .container{
+    border-top: 1px solid #eee;
+  }
+
+  ul{
+    list-style: none;
+    margin-left: 0px;
+    margin-top: 10px;
+
+    li{
+      display: inline-block;
+      margin-right: 15px;
+
+      a{
+        color: #aaa;
+      }
+    }
+  }
 }
