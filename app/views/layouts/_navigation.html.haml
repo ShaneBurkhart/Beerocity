@@ -2,16 +2,16 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li
-      = link_to "This Month's Recipe", content_path
+      = nav_link "This Month's Recipe", content_path
     %li
-      = link_to 'Edit account', edit_user_registration_path
+      = nav_link 'Edit account', edit_user_registration_path
     - if current_user.has_role? :admin
       %li
-        = link_to 'Admin', users_path
+        = nav_link 'Admin', users_path
     %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+      = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
   - else
     %li
-      = link_to 'Sign up', new_user_registration_path
+      = nav_link 'Sign up', new_user_registration_path
     %li
-      = link_to 'Login', new_user_session_path
+      = nav_link 'Login', new_user_session_path
