@@ -2,7 +2,7 @@
 %ul.nav.pull-right
   - if user_signed_in?
     %li
-      = link_to 'Content', content_path
+      = link_to "This Month's Recipe", content_path
     %li
       = link_to 'Edit account', edit_user_registration_path
     - if current_user.has_role? :admin
