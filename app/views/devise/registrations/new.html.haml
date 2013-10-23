@@ -11,9 +11,9 @@
       = display_base_errors resource
       .row-fluid
         .span6
-          = f.input :name, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :first_name, :autofocus => true, input_html: {class: "input-block-level"}
         .span6
-          = f.input :name, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :last_name, :autofocus => true, input_html: {class: "input-block-level"}
       .row-fluid
         .span12
           = f.input :email, :required => true, input_html: {class: "input-block-level"}
@@ -48,24 +48,15 @@
 
       %h3 Shipping Information
       .row-fluid
-        .span8
-          = label_tag :card_number, "Credit Card Number"
-          = text_field_tag :card_number, nil, name: nil, class: "input-block-level"
-        .span2
-          = label_tag :card_code, "CVV"
-          = text_field_tag :card_code, nil, name: nil, class: "input-block-level"
-      .row-fluid
         .span12
-          = label_tag :card_month, "Card Expiration"
-          .row-fluid
-            .span5
-              = select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "input-block-level"}
-            .span5
-              = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", class: "input-block-level"}
+          = f.input :address, :autofocus => true, input_html: {class: "input-block-level"}
       .row-fluid
-        .span10
-          = f.input :coupon, :label => 'Promotional Coupon (if any)', input_html: {class: "input-block-level"}
-
+        .span4
+          = f.input :city, :autofocus => true, input_html: {class: "input-block-level"}
+        .span4
+          = f.input :state, :autofocus => true, input_html: {class: "input-block-level"}
+        .span4
+          = f.input :zipcode, :autofocus => true, input_html: {class: "input-block-level"}
 
       = f.hidden_field :stripe_token
       = f.button :submit, 'Sign up', :class => 'btn-primary'
