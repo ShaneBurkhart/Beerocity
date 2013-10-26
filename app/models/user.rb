@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation,
     :remember_me, :stripe_token, :coupon, :address, :city, :state, :zipcode
 
+  validates :first_name, :last_name, :email, :password, :password_confirmation,
+    :address, :city, :state, :zipcode, presence: true
+
   attr_accessor :stripe_token, :coupon
   before_save :update_stripe
   before_destroy :cancel_subscription
