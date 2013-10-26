@@ -7,11 +7,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation,
-    :remember_me, :stripe_token, :coupon, :address, :city, :state, :zipcode
+  attr_accessible :first_name, :last_name, :email, :password,
+    :password_confirmation, :remember_me, :stripe_token, :coupon,
+    :address, :city, :state, :zipcode
 
   validates :first_name, :last_name, :email, :password, :password_confirmation,
     :address, :city, :state, :zipcode, presence: true
+
+  validates :email, uniqueness: true
+
+  validates :zipcode, length: {minimum: 5}
 
   attr_accessor :stripe_token, :coupon
   before_save :update_stripe

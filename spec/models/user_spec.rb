@@ -7,7 +7,11 @@ describe User do
       :name => "Example User",
       :email => "user@example.com",
       :password => "changeme",
-      :password_confirmation => "changeme"
+      :password_confirmation => "changeme",
+      :address => "111 First St.",
+      :city => "Some town",
+      :state => "Missouri",
+      :zipcode => "65656"
     }
   end
 
