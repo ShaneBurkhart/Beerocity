@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'coderay', '~> 1.0.9'
 end
 group :test do
   gem 'capybara'
