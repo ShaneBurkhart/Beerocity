@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    @plan = "basic"
+    @plan = Role.find_by_name "basic"
     super
   end
 

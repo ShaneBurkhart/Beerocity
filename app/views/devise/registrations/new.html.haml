@@ -6,7 +6,7 @@
   .span6
     %h3 Personal Information
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f|
-      = hidden_field_tag 'plan', @plan
+      = hidden_field_tag :plan, @plan.name
       = f.error_notification
       = display_base_errors resource
       .row-fluid
