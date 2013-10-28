@@ -3,6 +3,8 @@ class Recipe < ActiveRecord::Base
 
   validates :description, :name, :month, :year, presence: true
 
+  has_many :comments
+
   def human_date
     "#{Date::MONTHNAMES[month]} #{year}"
   end
