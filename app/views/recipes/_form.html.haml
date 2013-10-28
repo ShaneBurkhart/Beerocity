@@ -1,7 +1,18 @@
 = simple_form_for(@recipe) do |f|
   = f.error_notification
 
-  .form-inputs
+  .row-fluid
+    .span8
+      = f.input :name, input_html: { class: "input-block-level" }
+  .row-fluid
+    .span8
+      = f.input :description, input_html: { rows: 10, class: "input-block-level" }
+
+  .row-fluid
+    .span3
+      = f.input :month, collection: months
+    .span3
+      = f.input :year, collection: years
 
   .form-actions
     = f.button :submit

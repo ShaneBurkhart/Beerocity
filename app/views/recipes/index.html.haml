@@ -1,17 +1,23 @@
 %h1 Listing recipes
 
-%table
+= link_to 'New Recipe', new_recipe_path
+
+%br
+%br
+
+%table.table
   %tr
-    %th
-    %th
+    %th Name
+    %th Date
     %th
 
   - @recipes.each do |recipe|
-    %tr
-      %td= link_to 'Show', recipe
-      %td= link_to 'Edit', edit_recipe_path(recipe)
-      %td= link_to 'Destroy', recipe, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %tr{class: recipe_class(recipe)}
+      %td= recipe.name
+      %td= recipe.human_date
+      %td
+        .nav
+          = link_to 'Show', recipe
+          = link_to 'Edit', edit_recipe_path(recipe)
+          = link_to 'Destroy', recipe, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Recipe', new_recipe_path

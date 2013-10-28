@@ -1,4 +1,16 @@
-%p#notice= notice
+%h1 This Month's Recipe
+%h4.muted= @recipe.human_date
+.well.well-large.monthly-recipe
+  .row-fluid
+    .span7
+      %p.lead= @recipe.name
+      %p.desc= @recipe.description
+      %ul
+        %li= link_to "Instructions"
+        %li= link_to "Comments (0)", "#comments", class: "scroll"
+    .span5.text-center
+      = image_tag "gingerbread.jpg", class: "recipe-image"
+
 
 
 = link_to 'Edit', edit_recipe_path(@recipe)
