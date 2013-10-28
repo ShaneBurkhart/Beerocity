@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    if(current_user)
+      path = content_path
+    else
+      path = root_pat
+    end
+    redirect_to path, :alert => exception.message
+  end
 end
