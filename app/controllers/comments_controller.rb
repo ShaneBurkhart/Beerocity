@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to content_path}
+      format.html { redirect_to content_path, notice: "Successfully deleted comment."}
     end
   end
 end
