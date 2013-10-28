@@ -7,13 +7,22 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    unless params[:comment][:recipe_id].to_i == Recipe.current_recipe.id
+      redirect_to content_path, flash: {error: "That is not this month's recipe"}
+      return
+    end
+    unless params[:comment][:user_id].to_i == current_user.id
+      redirect_to content_path, flash: {error: "You can't do that."}
+      return
+    end
+
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to content_path, notice: 'Successfully commentted.' }
       else
-        format.html { redirect_to content_path, error: 'Comment could not be created.' }
+        format.html { redirect_to content_path, flash: {error: 'Comment could not be created.'}}
       end
     end
   end

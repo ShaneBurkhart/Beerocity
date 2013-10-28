@@ -9,4 +9,8 @@ class Recipe < ActiveRecord::Base
     "#{Date::MONTHNAMES[month]} #{year}"
   end
 
+  def self.current_recipe
+    Recipe.find_by_month_and_year(Date.today.month, Date.today.year)
+  end
+
 end

@@ -3,7 +3,7 @@ class ContentController < ApplicationController
 
   def basic
     authorize! :view, :basic, :message => 'Access limited to subscribers.'
-    @recipe = Recipe.find_by_month_and_year(Date.today.month, Date.today.year)
+    @recipe = Recipe.current_recipe
     @comment = Comment.new(user_id: current_user.id, recipe_id: @recipe.id)
   end
 

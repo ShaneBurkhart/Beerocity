@@ -22,14 +22,14 @@ class User < ActiveRecord::Base
 
   attr_accessor :stripe_token, :coupon
   before_save :update_stripe
-  before_destroy :cancel_subscription
+#  before_destroy :cancel_subscription
 
   def update_plan(role)
     self.role_ids = []
     self.add_role(role.name)
     unless customer_id.nil?
-      customer = Stripe::Customer.retrieve(customer_id)
-      customer.update_subscription(:plan => role.name)
+      # customer = Stripe::Customer.retrieve(customer_id)
+      # customer.update_subscription(:plan => role.name)
     end
     true
   rescue Stripe::StripeError => e
@@ -49,8 +49,7 @@ class User < ActiveRecord::Base
         customer = Stripe::Customer.create(
           :email => email,
           :description => name,
-          :card => stripe_token,
-          :plan => roles.first.name
+          :card => stripe_token
         )
       else
         customer = Stripe::Customer.create(
