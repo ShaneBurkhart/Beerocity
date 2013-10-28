@@ -23,4 +23,5 @@ Beerocity::Application.routes.draw do
   end
 
   resources :users, except: ["show"]
+  resources :recipes
 end
