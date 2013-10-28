@@ -7,48 +7,35 @@
       %p.desc= @recipe.description
       %ul
         %li= link_to "Instructions"
-        %li= link_to "Comments (104)", "#comments", class: "scroll"
+        %li= link_to "Comments (#{@recipe.comments.count})", "#comments", class: "scroll"
     .span5.text-center
       = image_tag "gingerbread.jpg", class: "recipe-image"
 
 #comments
-  %h3 Comments (104)
+  %h3= "Comments (#{@recipe.comments.count})"
 
   %hr
 
+  = simple_form_for(@comment) do |f|
+    = f.error_notification
+    = f.input :recipe_id, as: :hidden
+    = f.input :user_id, as: :hidden
 
+    .row-fluid
+      .span8
+        = f.input :body, input_html: { rows: 3, class: "input-block-level" }
+    = f.button :submit, "Comment"
 
-  %p.lead
-    Todd Goodman -
-    %span.muted Nov. 13
-  %p Great recipe!
   %hr
 
-  %p.lead
-    Todd Goodman -
-    %span.muted Nov. 13
-  %p Definitely would recommend this recipe to a friend!
-  %hr
-
-  %p.lead
-    Todd Goodman -
-    %span.muted Nov. 13
-  %p Decent recipe, but I am not a huge fan on gingerbread!
-  %hr
-
-  %p.lead
-    Todd Goodman -
-    %span.muted Nov. 13
-  %p Great recipe!
-  %hr
-
-  %p.lead
-    Todd Goodman -
-    %span.muted Nov. 13
-  %p Definitely would recommend this recipe to a friend!
-  %hr
-
-  %p.lead
-    Todd Goodman -
-    %span.muted Nov. 13
-  %p Decent recipe, but I am not a huge fan on gingerbread!
+  - if @recipe.comments.empty?
+    %p Be the first to comment on this month's recipe!
+  - else
+    - @recipe.comments.find(:all, order: "updated_at desc").each do |comment|
+      %p.lead
+        = "#{comment.user.first_name} -"
+        %span.muted
+          = time_ago_in_words comment.created_at
+          ago
+      %p= comment.body
+      %hr

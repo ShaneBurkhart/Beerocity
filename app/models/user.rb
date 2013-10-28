@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   validates :zipcode, length: {minimum: 5}
 
+  has_many :comments
+
   attr_accessor :stripe_token, :coupon
   before_save :update_stripe
   before_destroy :cancel_subscription

@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.find(:all, :order => "year desc, month desc")
+    @recipes = Recipe.find(:all, order: "year desc, month desc")
 
     respond_to do |format|
       format.html # index.html.erb
