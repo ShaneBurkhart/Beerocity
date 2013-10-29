@@ -16,3 +16,17 @@
 = link_to 'Edit', edit_recipe_path(@recipe)
 \|
 = link_to 'Back', recipes_path
+
+#comments
+%h3= "Comments (#{@recipe.comments.count})"
+
+%hr
+
+- @recipe.comments.find(:all, order: "updated_at desc").each do |comment|
+  %p.lead
+    = "#{comment.user.first_name} -"
+    %span.muted
+      = time_ago_in_words comment.created_at
+      ago
+  %p= comment.body
+  %hr
