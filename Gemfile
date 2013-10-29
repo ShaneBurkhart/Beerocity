@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'stripe'
 gem 'stripe_event'
 gem 'paperclip'
+gem 'sendgrid'
 
 group :development do
   gem 'better_errors'
