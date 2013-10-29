@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     @plan = Role.find_by_name "basic"
+    @recipe = Recipe.current_recipe
     super
   end
 
