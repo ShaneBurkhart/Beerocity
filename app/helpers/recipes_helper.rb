@@ -12,7 +12,11 @@ module RecipesHelper
 
   def recipe_class(recipe)
     if(recipe.month == Date.today.month && recipe.year == Date.today.year)
-      "success"
+      if recipe.has_been_charged?
+        "success"
+      else
+        "error"
+      end
     elsif(recipe.month > Date.today.month && recipe.year >= Date.today.year)
       "warning"
     else

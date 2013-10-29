@@ -10,6 +10,9 @@ Beerocity::Application.routes.draw do
   post "contact" => "contact#message"
   get "tos" => "faq#index"
 
+# The route to execute charges
+  post "recipe/charge" => "recipes#charge"
+
   authenticated :user do
     root :to => 'home#index'
   end

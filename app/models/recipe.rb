@@ -1,5 +1,5 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :description, :name, :month, :year, :image
+  attr_accessible :description, :name, :month, :year, :image, :is_charged
   has_attached_file :image
 
   validates :description, :name, :month, :year, presence: true
@@ -7,6 +7,14 @@ class Recipe < ActiveRecord::Base
   validate :not_duplicate_month
 
   has_many :comments
+
+  def charge
+    self.is_charged = true
+  end
+
+  def has_been_charged?
+    self.is_charged
+  end
 
   def human_date
     "#{Date::MONTHNAMES[month]} #{year}"

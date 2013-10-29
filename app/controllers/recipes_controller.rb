@@ -56,6 +56,22 @@ class RecipesController < ApplicationController
     end
   end
 
+
+  # POST /recipes/charge
+  def charge
+    @recipe = Recipe.current_recipe
+    @recipe.charge unless @recipe.has_been_charged?
+    if @recipe.save
+      unless @recipe.has_been_charged?
+        redirect_to recipes_path, notice: "Successfully charged customers!"
+      else
+        redirect_to recipes_path, flash: {error: "That recipe has already been charged this month!"}
+      end
+    else
+      redirect_to recipes_path, flash: {error: "There was an error when charging!"}
+    end
+  end
+
   # PUT /recipes/1
   # PUT /recipes/1.json
   def update
