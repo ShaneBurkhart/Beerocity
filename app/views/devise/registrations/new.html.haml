@@ -1,7 +1,7 @@
 - content_for :head do
   = tag :meta, :name => "stripe-key", content: ENV["STRIPE_PUBLIC_KEY"]
 
-%h2 Sign up
+%h2 Sign Up
 #stripe_error.alert.alert-error{:style => "display:none"}
 .row
   .span6
@@ -57,7 +57,9 @@
           = f.input :zipcode, :autofocus => true, input_html: {class: "input-block-level"}
 
       = f.hidden_field :stripe_token
-      = f.button :submit, 'Sign up', :class => 'btn-primary'
+      .row-fluid
+        .span12
+          = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
 
   .span6.text-right
     .row-fluid
