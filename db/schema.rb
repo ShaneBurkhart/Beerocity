@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029160454) do
+ActiveRecord::Schema.define(:version => 20131029181801) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20131029160454) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "is_charged"
+    t.integer  "deadline"
   end
 
   create_table "roles", :force => true do |t|
