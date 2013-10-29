@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  before_filter :users_comment, except: ["create"]
+
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
@@ -7,15 +10,6 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    unless params[:comment][:recipe_id].to_i == Recipe.current_recipe.id
-      redirect_to content_path, flash: {error: "That is not this month's recipe"}
-      return
-    end
-    unless params[:comment][:user_id].to_i == current_user.id
-      redirect_to content_path, flash: {error: "You can't do that."}
-      return
-    end
-
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
@@ -51,4 +45,11 @@ class CommentsController < ApplicationController
       format.html { redirect_to content_path, notice: "Successfully deleted comment."}
     end
   end
+
+  private
+
+    def users_comment
+      redirect_to content_path, flash: {error: "That's not yours!"} unless Comment.find(params[:id]).user.id == current_user.id
+    end
+
 end
