@@ -20,13 +20,14 @@ namespace :admin do
 
   task :recipe => :environment do
     puts "Creating recipe for this month"
-    Recipe.find_or_create_by_month_and_year(
+    r = Recipe.find_or_create_by_month_and_year(
       name: "Seasonal Ale",
       description: "This recipe is great!  It is perfect for this season!",
       month: Date.today.month,
       year: Date.today.year,
       deadline: 20
     )
+    r.save validate: false
   end
 
   task :init => [:create, :recipe]
