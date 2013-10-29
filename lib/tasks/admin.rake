@@ -27,7 +27,7 @@ namespace :admin do
       year: Date.today.year,
       deadline: 20
     )
-    r.save validate: false
+    r.save validate: false unless Recipe.current_recipe
   end
 
   task :init => [:create, :recipe]
