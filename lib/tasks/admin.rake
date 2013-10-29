@@ -14,6 +14,7 @@ namespace :admin do
     u.city = "City"
     u.state = "State"
     u.zipcode = "42321"
+    u.add_role :admin
     u.save
   end
 
