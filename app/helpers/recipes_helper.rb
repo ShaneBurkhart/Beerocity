@@ -10,6 +10,11 @@ module RecipesHelper
     end
   end
 
+  def days
+    (1..31).to_a
+  end
+
+
   def recipe_class(recipe)
     if(recipe.month == Date.today.month && recipe.year == Date.today.year)
       if recipe.has_been_charged?

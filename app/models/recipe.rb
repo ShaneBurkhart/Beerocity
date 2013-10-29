@@ -1,8 +1,8 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :description, :name, :month, :year, :image, :is_charged
+  attr_accessible :description, :name, :month, :year, :image, :is_charged, :deadline
   has_attached_file :image
 
-  validates :description, :name, :month, :year, presence: true
+  validates :description, :name, :month, :year, :deadline, presence: true
   validates :image, presence: true unless @id
   validate :not_duplicate_month
 
