@@ -23,7 +23,7 @@
 
     .row-fluid
       .span8
-        = f.input :body, input_html: { rows: 3, class: "input-block-level" }
+        = f.input :body, label: "Comment", required: false, input_html: { rows: 3, class: "input-block-level" }
     = f.button :submit, "Comment"
 
   %hr
