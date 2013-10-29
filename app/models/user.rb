@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
     :password_confirmation, :remember_me, :stripe_token, :coupon,
     :address, :city, :state, :zipcode
 
-  validates :first_name, :last_name, :email, :password, :password_confirmation,
-    :address, :city, :state, :zipcode, presence: true
+  validates :first_name, :last_name, :email, :address, :city,
+    :state, :zipcode, presence: true
 
   validates :email, uniqueness: true
 
@@ -45,28 +45,18 @@ class User < ActiveRecord::Base
       if !stripe_token.present?
         raise "Stripe token not present. Can't create account."
       end
-      if coupon.blank?
         customer = Stripe::Customer.create(
           :email => email,
-          :description => name,
+          :description => full_name,
           :card => stripe_token
         )
-      else
-        customer = Stripe::Customer.create(
-          :email => email,
-          :description => name,
-          :card => stripe_token,
-          :plan => roles.first.name,
-          :coupon => coupon
-        )
-      end
     else
       customer = Stripe::Customer.retrieve(customer_id)
       if stripe_token.present?
         customer.card = stripe_token
       end
       customer.email = email
-      customer.description = name
+      customer.description = full_name
       customer.save
     end
     self.last_4_digits = customer.cards.data.first["last4"]
@@ -79,6 +69,7 @@ class User < ActiveRecord::Base
     false
   end
 
+=begin
   def cancel_subscription
     unless customer_id.nil?
       customer = Stripe::Customer.retrieve(customer_id)
@@ -93,6 +84,7 @@ class User < ActiveRecord::Base
     errors.add :base, "Unable to cancel your subscription. #{e.message}."
     false
   end
+=end
 
   def expire
     UserMailer.expire_email(self).deliver
