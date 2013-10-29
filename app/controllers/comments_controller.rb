@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   before_filter :users_comment, except: ["create"]
+  before_filter :valid_user, only: ["create"]
 
   # GET /comments/1/edit
   def edit
@@ -52,4 +53,8 @@ class CommentsController < ApplicationController
       redirect_to content_path, flash: {error: "That's not yours!"} unless Comment.find(params[:id]).user.id == current_user.id
     end
 
+
+    def valid_user
+      redirect_to content_path, flash: {error: "You can't do that!"} unless current_user.id == params[:comment][:user_id].to_i
+    end
 end
