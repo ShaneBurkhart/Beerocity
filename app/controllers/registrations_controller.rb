@@ -29,6 +29,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  protected
+
+    def after_update_path_for(resource)
+      content_path
+    end
+
   private
 
     def build_resource(*args)

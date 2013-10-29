@@ -14,7 +14,7 @@
         .span6
           = f.input :first_name, :autofocus => true, input_html: {class: "input-block-level"}
         .span6
-          = f.input :last_name, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :last_name, input_html: {class: "input-block-level"}
       .row-fluid
         .span12
           = f.input :email, :required => true, input_html: {class: "input-block-level"}
@@ -47,14 +47,14 @@
       %h3 Shipping Information
       .row-fluid
         .span12
-          = f.input :address, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :address, input_html: {class: "input-block-level"}
       .row-fluid
         .span4
-          = f.input :city, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :city, input_html: {class: "input-block-level"}
         .span4
-          = f.input :state, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :state, input_html: {class: "input-block-level"}
         .span4
-          = f.input :zipcode, :autofocus => true, input_html: {class: "input-block-level"}
+          = f.input :zipcode, input_html: {class: "input-block-level"}
 
       = f.hidden_field :stripe_token
       .row-fluid
