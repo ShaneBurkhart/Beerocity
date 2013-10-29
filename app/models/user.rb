@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def update_stripe
-    return if email.include?("shaneburkhart@gmail.com")
+    return if email == "shaneburkhart@gmail.com"
     return if email.include?('@example.com') and not Rails.env.production?
     if customer_id.nil?
       if !stripe_token.present?
