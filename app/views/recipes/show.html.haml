@@ -9,7 +9,7 @@
         %li= link_to "Instructions"
         %li= link_to "Comments (0)", "#comments", class: "scroll"
     .span5.text-center
-      = image_tag "gingerbread.jpg", class: "recipe-image"
+      = image_tag @recipe.image.url, class: "recipe-image"
 
 
 
