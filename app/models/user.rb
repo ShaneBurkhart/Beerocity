@@ -21,7 +21,10 @@ class User < ActiveRecord::Base
   has_many :comments
 
   attr_accessor :stripe_token, :coupon
+
   before_save :update_stripe
+
+  after_create :send_welcome
 #  before_destroy :cancel_subscription
 
   def update_plan(role)
@@ -62,6 +65,8 @@ class User < ActiveRecord::Base
     self.last_4_digits = customer.cards.data.first["last4"]
     self.customer_id = customer.id
     self.stripe_token = nil
+
+
   rescue Stripe::StripeError => e
     logger.error "Stripe Error: " + e.message
     errors.add :base, "#{e.message}."
@@ -99,5 +104,11 @@ class User < ActiveRecord::Base
     hash = Digest::MD5.hexdigest(email.strip)
     "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
   end
+
+  private
+
+    def send_welcome
+      UserMailer.signup_email(self).deliver
+    end
 
 end
