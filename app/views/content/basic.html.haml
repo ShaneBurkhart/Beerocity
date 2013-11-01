@@ -1,45 +1,12 @@
 %h1 This Month's Recipe
-%h4.muted= @recipe.human_date
+%h4.muted November 2013
 .well.well-large.monthly-recipe
   .row-fluid
     .span7
-      %p.lead= @recipe.name
-      %p.desc= @recipe.description
+      %p.lead Gingerbread Ale
+      %p.desc Some great description
       %ul
         %li= link_to "Instructions"
-        %li= link_to "Comments (#{@recipe.comments.count})", "#comments", class: "scroll"
     .span5.text-center
-      = image_tag @recipe.image.url, class: "recipe-image"
+      = image_tag "gingerbread.jpg", class: "recipe-image"
 
-#comments
-  %h3= "Comments (#{@recipe.comments.count})"
-
-  %hr
-
-  = simple_form_for(@comment) do |f|
-    = f.error_notification
-    = f.input :recipe_id, as: :hidden
-    = f.input :user_id, as: :hidden
-
-    .row-fluid
-      .span8
-        = f.input :body, label: "Comment", required: false, input_html: { rows: 3, class: "input-block-level" }
-    = f.button :submit, "Comment"
-
-  %hr
-
-  - if @recipe.comments.empty?
-    %p Be the first to comment on this month's recipe!
-  - else
-    - @recipe.comments.find(:all, order: "updated_at desc").each do |comment|
-      %p.lead
-        = "#{comment.user.first_name} -"
-        %span.muted
-          = time_ago_in_words comment.created_at
-          ago
-      %p= comment.body
-      - if comment.user.id == current_user.id
-        = link_to "Edit", edit_comment_path(comment)
-        \|
-        = link_to 'Delete', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
-      %hr
