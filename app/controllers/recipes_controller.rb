@@ -56,7 +56,7 @@ class RecipesController < ApplicationController
     end
   end
 
-
+=begin
   # POST /recipes/charge
   def charge
     @recipe = Recipe.current_recipe
@@ -71,6 +71,7 @@ class RecipesController < ApplicationController
       redirect_to recipes_path, flash: {error: "There was an error when charging!"}
     end
   end
+=end
 
   # PUT /recipes/1
   # PUT /recipes/1.json
