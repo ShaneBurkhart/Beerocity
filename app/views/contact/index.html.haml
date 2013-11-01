@@ -3,6 +3,8 @@
 %p support@homebrewster.com
 %p.lead Or fill out the form.  We will get back to you as soon as possible!
 = form_tag do
+  = label_tag :email, "What is your email?"
+  = input_tag :email
   = label_tag :mood, "How are you feeling?"
   = select_tag(:mood, options_for_select(moods))
   = label_tag :message, "What would you like to tell us?"
