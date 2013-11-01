@@ -4,7 +4,7 @@
   .span3
     = link_to 'New Recipe', new_recipe_path, class: "btn btn-info"
   .span9
-    = form_tag recipe_charge_path, method: "post" do
+    = form_tag do
       = submit_tag "Charge This Month's Recipe", class: "btn btn-danger pull-right", :data => { :confirm => "Are you sure you want to charge this month's recipe?" }
 
 %br
