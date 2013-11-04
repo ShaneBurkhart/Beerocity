@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029181801) do
+ActiveRecord::Schema.define(:version => 20131104210923) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20131029181801) do
     t.string   "zipcode"
     t.string   "city"
     t.string   "state"
+    t.string   "country"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
