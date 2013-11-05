@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     :password_confirmation, :remember_me, :stripe_token, :coupon,
     :address, :city, :state, :zipcode, :country
 
+
   validates :first_name, :last_name, :email, :address, :city,
     :state, :zipcode, :country, presence: true
 
