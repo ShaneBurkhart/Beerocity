@@ -32,7 +32,7 @@
         .span4
           = f.input :state, input_html: {class: "input-block-level"}, label: "State/Providence"
         .span4
-          = f.input :zipcode, input_html: {class: "input-block-level"}
+          = f.input :zipcode, input_html: {class: "input-block-level"}, label: "Postal Code"
       .row-fluid
         .span12
           = f.input :country, as: :select, collection: ["USA", "Canada"], input_html: {class: "input-block-level"}
