@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  validates :zipcode, length: {minimum: 5}
-
   has_many :comments
 
   attr_accessor :stripe_token, :coupon
