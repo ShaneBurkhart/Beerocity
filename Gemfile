@@ -20,6 +20,7 @@ gem 'stripe'
 gem 'stripe_event'
 gem 'paperclip'
 gem 'sendgrid'
+gem 'sitemap_generator'
 
 group :development do
   gem 'better_errors'
