@@ -74,6 +74,10 @@ html, body {
         color: white;
         text-decoration: none;
         font-weight: bold;
+
+        &:hover{
+          color: #bbb;
+        }
       }
     }
   }
