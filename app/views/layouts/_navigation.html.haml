@@ -1,5 +1,11 @@
 = link_to "Home Brewster", current_user ? content_path : root_path, :class => 'site-logo'
-%ul.nav.pull-right
+%ul.site-nav.pages-nav
+  %li
+    = nav_link 'Pricing', '#pricing'
+  %li
+    = nav_link 'FAQ', faq_path
+
+%ul.site-nav.pull-right
   - if user_signed_in?
     - if current_user.has_role? :admin
       %li
@@ -15,8 +21,8 @@
       = nav_link 'Logout', destroy_user_session_path, :method=>'delete'
   - else
     %li
-      = nav_link 'Home', root_path
+      = nav_link 'Login', new_user_session_path, class: "discrete"
     %li
-      = nav_link 'Sign up', new_user_registration_path
-    %li
-      = nav_link 'Login', new_user_session_path
+      %strong
+        = nav_link 'Start Brewing Great Beer!', new_user_registration_path, class: "btn btn-danger btn-eye-catcher"
+

@@ -10,13 +10,14 @@
     = yield(:head)
   %body{:class => "#{controller_name} #{action_name}" + (current_page?(root_path) == true ? "" : "body_space")}
     #wrap
+      .navbar.navbar-fixed-top.navbar-inverse.navbar-space
+        %nav.navbar-inner
+          .container
+            = render 'layouts/navigation'
+
       - if current_page? root_path
         = render "layouts/mega_header"
-      - else
-        .navbar.navbar-static-top.navbar-inverse.navbar-space
-          %nav.navbar-inner
-            .container
-              = render 'layouts/navigation'
+
       .container
         .content
           .row

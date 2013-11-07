@@ -8,8 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap_and_overrides
+ *= require_self
  *= require_tree .
 */
 
@@ -61,8 +61,46 @@ html, body {
 
 
 .navbar{
-  &.navbar-space{
-    margin-bottom: 15px;
+  .navbar-inner{
+    background-color: #000;
+  }
+
+  .pages-nav{
+    margin-top: 28px;
+
+    li{
+      margin-right: 10px;
+
+      a{
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .site-nav{
+    list-style: none;
+    margin-bottom: 0px;
+    display: inline-block;
+
+    li{
+      display: inline-block;
+
+      .btn-eye-catcher{
+        margin: 15px 0;
+        padding: 13px 25px 15px;
+        margin-left: 10px;
+      }
+
+      .discrete{
+        text-decoration: none;
+        color: #999;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
 

@@ -78,20 +78,22 @@
 }
 
 .navigation-container{
-  margin-top: 134px;
+  margin-top: 107px;
   background-color: rgba(0, 0, 0, .83);
   color: white;
   text-align: center;
-  padding: 26px 0;
+  padding: 30px 0;
 
-  h1{
-    text-indent: -99999em;
-    background-image: image-url("header_logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    display: inline-block;
-    width: 664px;
-    height: 120px;
+  h2{
+    font-size: 4.3em;
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+
+  .btn-large{
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 20px 40px 23px;
   }
 
   ul{
