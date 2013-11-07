@@ -22,6 +22,7 @@ gem 'stripe_event'
 gem 'paperclip'
 gem 'sendgrid'
 gem 'sitemap_generator'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'better_errors'
