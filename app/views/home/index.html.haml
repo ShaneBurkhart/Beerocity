@@ -1,44 +1,51 @@
-.container#about
+.marketing-container#pricing.dark
+  .container
+    %h2.text-center Pricing
+
+    .row
+      .span4.offset4.text-center
+        %p.huge-money
+          %span.little-dollar-sign $
+          34
+          %span.little-pennies .95
+        %p.shipping Per month plus shipping and handling
+        = link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-large btn-block btn-info"
+
+.marketing-container.light#about
+  .container
+    .row
+      .span8
+        %h2 Try new beer every month!
+        %p.info HomeBrewster makes it easy for you to brew and try all kinds of beer! Every month we will send you the ingredients for a new recipe to brew. You no longer need waste time searching for unique and seasonal recipes. We do that for you!
+      .span4
+
+.marketing-container
+  .container
+    .row
+      .span8
+        %h2 Completely all-grain kits.
+        %p.info We understand that all grain brewing gives you more control, and creates an all around better beer.  Because of this, our kits are completely all grain brew kits.
+      .span4
 
 
-  .row.marketing-container
-    .span6
-      %p.info HomeBrewster makes it easy for you to brew and try all kinds of beer! Every month we will send you the ingredients for a new recipe to brew. You no longer need waste time searching for unique and seasonal recipes. We do that for you!
+.marketing-container.light
+  .container
+    .row
+      .span8
+        %h2 Five gallon kits.
+        %p.info Currently we only offer kits for five gallon batches.  Most people tend to brew around this much per batch.  If you would like a bigger or smaller kit, contact us and we will see what we can do.
+      .span4
 
-      %p.info We understand that all grain brewing gives you more control, and creates an all around better beer.  Because of this, our kits are completely all grain brew kits.
+.marketing-container
+  .container
+    .row
+      .span8
+        %h2 What's included:
+        %p.info You will receive malt, hops, irish moss (if necessary) and dry brewer's yeast.  Additional spices and ingredients will need to purchased at your local grocery store.
 
-      %p.info Currently we only offer kits for five gallon batches.  Most people tend to brew around this much per batch.  If you would like a bigger or smaller kit, contact us and we will see what we can do.
+.marketing-container.light
+  .container
+    .row
+      .span4.text-center.offset4
+        = link_to "Start Brewing Great Beer!", new_user_registration_path, class: "btn btn-large btn-block btn-info"
 
-    .span6
-      %p.lead What's included:
-      %ul
-        %li The recipe for the kit.
-        %li High quality, fresh malt grains.
-        %li All of the necessary hops.
-        %li Dry brewer's yeast.
-      %p Additional spices or ingredients needed for the kits will need to be purchased at your local grocery store.
-      .row-fluid
-        .span9
-          = link_to "Get Brewing Now!", new_user_registration_path, class: "btn btn-info btn-large btn-block"
-
-  %hr
-
-
-  .row.marketing-container#pricing
-    .span8
-      %h2 Pricing
-
-      .alert.alert-info
-        The deadline to get this month's kit is 11/15/13.
-
-      %p You will be sent a quality all grain beer kit to your door every month.
-      %p Your kit will be shipped on the third Monday of each month so you can get it just before the weekend.
-      %p We won't charge you until your kit ships.
-    .span3.text-center
-      %br
-      %p.huge-money
-        %span.little-dollar-sign $
-        34
-        %span.little-pennies .95
-      %p.shipping Plus shipping and handling
-      = link_to "Start Now!", new_user_registration_path, class: "btn btn-large btn-block btn-warning"

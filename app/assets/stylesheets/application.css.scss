@@ -38,10 +38,8 @@ html, body {
 #footer {
   padding-top: 15px;
   color: #f3f3f3;
-
-  .container{
-    border-top: 1px solid #eee;
-  }
+  background-color: #333;
+  color: #fff;
 
   ul{
     list-style: none;
@@ -53,7 +51,8 @@ html, body {
       margin-right: 15px;
 
       a{
-        color: #aaa;
+        color: #ccc;
+        text-decoration: none;
       }
     }
   }
