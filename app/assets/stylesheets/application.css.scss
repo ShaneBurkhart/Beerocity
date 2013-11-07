@@ -96,10 +96,17 @@ html, body {
     li{
       display: inline-block;
 
+      &.active{
+        a{
+          color: #e74c3c;
+        }
+      }
+
       .btn-eye-catcher{
         margin: 15px 0;
         padding: 13px 25px 15px;
         margin-left: 10px;
+
       }
 
       .discrete{
