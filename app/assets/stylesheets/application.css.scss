@@ -31,6 +31,10 @@ html, body {
   height: 100%;
   /* Negative indent footer by it's height */
   margin: 0 auto -75px;
+  padding-top: 78px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 /* Set the fixed height of the footer here */

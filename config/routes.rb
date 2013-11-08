@@ -7,7 +7,7 @@ Beerocity::Application.routes.draw do
   get "team" => "about#index"
   get "faq" => "faq#index"
   get "contact" => "contact#index"
-  post "contact" => "contact#message"
+#  post "contact" => "contact#message"
 #  get "tos" => "faq#index"
 
 # The route to execute charges
