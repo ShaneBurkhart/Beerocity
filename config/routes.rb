@@ -26,6 +26,6 @@ Beerocity::Application.routes.draw do
   end
 
   resources :users, except: ["show"]
-  resources :recipes
+#  resources :recipes
   resources :comments, except: ["index", "show", "new"]
 end
