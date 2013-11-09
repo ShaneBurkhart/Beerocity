@@ -1,38 +1,39 @@
 - content_for :title, "This Month's Recipe"
-%h1 This Month's Recipe
-%h4.muted November 2013
-.alert.alert-info
-  The deadline to get this month's kit is 11/15/13. If you missed the deadline, no worries! You are signed up for next month.
+.container.content
+  %h1 This Month's Recipe
+  %h4.muted November 2013
+  .alert.alert-info
+    The deadline to get this month's kit is 11/15/13. If you missed the deadline, no worries! You are signed up for next month.
 
-.alert.alert-info
-  Kits will ship on Monday, November 18th.
+  .alert.alert-info
+    Kits will ship on Monday, November 18th.
 
 
-.well.well-large.monthly-recipe
-  .row-fluid
-    .span7
-      %p.lead Gingerbread Ale
-      %p.desc Once again, it's the time of year for eggnog and gingerbread cookies!  In the spirit of the holidays, this month's kit is a delicious Gingerbread Ale.  We are sending this kit in November so you have time to brew it before Christmas.  That way you can enjoy your fresh Gingerbread Ale with Christmas dinner!  The kit will ship on Monday, November 18th, and you will receive it just before the weekend.  We hope you enjoy this month's kit and happy brewing!  Cheers!
-    .span5.text-center
-      = image_tag "gingerbread.jpg", class: "recipe-image"
+  .well.well-large.monthly-recipe
+    .row-fluid
+      .span7
+        %p.lead Gingerbread Ale
+        %p.desc Once again, it's the time of year for eggnog and gingerbread cookies!  In the spirit of the holidays, this month's kit is a delicious Gingerbread Ale.  We are sending this kit in November so you have time to brew it before Christmas.  That way you can enjoy your fresh Gingerbread Ale with Christmas dinner!  The kit will ship on Monday, November 18th, and you will receive it just before the weekend.  We hope you enjoy this month's kit and happy brewing!  Cheers!
+      .span5.text-center
+        = image_tag "gingerbread.jpg", class: "recipe-image"
 
-#disqus_thread
+  #disqus_thread
 
-:javascript
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'homebrewster'; // required: replace example with your forum shortname
-  var disqus_title = 'November 2013 Beer Kit'; // required: replace example with your forum shortname
+  :javascript
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'homebrewster'; // required: replace example with your forum shortname
+    var disqus_title = 'November 2013 Beer Kit'; // required: replace example with your forum shortname
 
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 
-%noscript
-  Please enable JavaScript to view the
-  = link_to "comments powered by Disqus.", "http://disqus.com/?ref_noscript"
+  %noscript
+    Please enable JavaScript to view the
+    = link_to "comments powered by Disqus.", "http://disqus.com/?ref_noscript"
 
-= link_to "comments powered by Disqus", "http://disqus.com", class: "dsq-brlink"
+  = link_to "comments powered by Disqus", "http://disqus.com", class: "dsq-brlink"
 
