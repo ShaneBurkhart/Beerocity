@@ -11,15 +11,14 @@ class User < ActiveRecord::Base
     :password_confirmation, :remember_me, :stripe_token, :coupon,
     :address, :city, :state, :zipcode, :country
 
-
-  validates :first_name, :last_name, :email, :address, :city,
-    :state, :zipcode, :country, presence: true
-
-  validates :email, uniqueness: true
+  attr_accessor :stripe_token, :coupon
+  attr_writer :current_step
 
   has_many :comments
 
-  attr_accessor :stripe_token, :coupon
+  validates :first_name, :last_name, :email, presence: true, if: lambda{ |o| o.current_step == "shipping"}
+  validates :address, :city, :state, :zipcode, :country, presence: true
+  validates :email, uniqueness: true
 
   before_save :update_stripe
 
@@ -104,10 +103,38 @@ class User < ActiveRecord::Base
     "http://www.gravatar.com/avatar/#{hash}?s=200&d=mm"
   end
 
+  def next_step
+    self.current_step = steps[steps.index(self.current_step) + 1]
+  end
+
+  def previous_step
+    self.current_step = steps[steps.index(self.current_step) - 1]
+  end
+
+  def first_step?
+    self.current_step == steps.first
+  end
+
+  def last_step?
+    self.current_step == steps.last
+  end
+
+  def all_valid?
+    steps.all? do |step|
+      self.current_step = step
+      valid?
+    end
+  end
+
   private
 
     def send_welcome
       UserMailer.signup_email(self).deliver
     end
+
+    def steps
+      %w[account shipping billing confirmation]
+    end
+
 
 end
