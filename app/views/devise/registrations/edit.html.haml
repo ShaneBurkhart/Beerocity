@@ -50,7 +50,7 @@
         %p We need your current password to confirm your changes.
         .row-fluid
           .span6
-            = f.input :current_password, :required => true
+            = f.input :current_password, :required => true, input_html: {class: "input-block-level"}
 
         .row-fluid
           .span12
