@@ -16,6 +16,6 @@ class OrdersController < ApplicationController
 
     def authorize_user!
       authorize! :manage, :order
-      redirect_to content_path, flash: {notice: "You have already done that."} if current_user.order
+      redirect_to content_path, flash: {error: "You have already done that."} if current_user.order && controller.action_name != "update"
     end
 end
