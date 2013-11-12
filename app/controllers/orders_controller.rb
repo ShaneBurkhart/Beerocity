@@ -14,6 +14,18 @@ class OrdersController < ApplicationController
     @order = current_user.order
   end
 
+  def update_card
+    @user = current_user
+    @user.stripe_token = params[:user][:stripe_token]
+    if @user.save
+      redirect_to edit_user_registration_path, :notice => 'Updated card.'
+    else
+      flash.alert = 'Unable to update card.'
+      render :edit
+    end
+  end
+
+
   private
 
     def authorize_user!
