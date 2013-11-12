@@ -4,7 +4,6 @@
 
 .content.container
   %h2 Sign Up
-  #stripe_error.alert.alert-error{:style => "display:none"}
   .row
     .span6
       %h3 Personal Information
@@ -26,44 +25,6 @@
           .span6
             = f.input :password_confirmation, :required => true, input_html: {class: "input-block-level"}
 
-        - if @user.stripe_token
-          %p Credit card acceptance is pending.
-        - else
-          %h3 Credit Card Information
-          .row-fluid
-            .span10
-              = label_tag :card_number, "Credit Card Number"
-              = text_field_tag :card_number, nil, name: nil, class: "input-block-level"
-            .span2
-              = label_tag :card_code, "CVV"
-              = text_field_tag :card_code, nil, name: nil, class: "input-block-level"
-          .row-fluid
-            .span12
-              = label_tag :card_month, "Card Expiration"
-              .row-fluid
-                .span6
-                  = select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "input-block-level"}
-                .span6
-                  = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", class: "input-block-level"}
-
-        %h3 Shipping Information
-        .row-fluid
-          .span12
-            = f.input :address, input_html: {class: "input-block-level"}
-        .row-fluid
-          .span4
-            = f.input :city, input_html: {class: "input-block-level"}
-          .span4
-            = f.input :state, input_html: {class: "input-block-level"}
-          .span4
-            = f.input :zipcode, input_html: {class: "input-block-level"}, label: "Postal Code"
-        .row-fluid
-          .span12
-            = f.input :country, as: :select, collection: ["USA"], input_html: {class: "input-block-level"}
-
-        %br
-
-        = f.hidden_field :stripe_token
         .row-fluid
           .span12
             = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
