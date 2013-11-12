@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :verify_order!
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
@@ -24,4 +25,13 @@ class ApplicationController < ActionController::Base
     end
     redirect_to path, :alert => exception.message
   end
+
+  private
+
+    def verify_order!
+      return unless params[:controller] != "orders" && (params[:action] != "create" || params[:action] != "new")
+      return if current_user.has_role? :admin
+      redirect_to new_user_order_path, flash: {error: "You need to finish ordering."} unless current_user.order
+    end
+
 end

@@ -3,13 +3,15 @@ class OrdersController < ApplicationController
   before_filter :authorize_user!
 
   def new
-
+    @order = current_user.build_order
   end
 
   def create
+    @order = current_user.build_order params[:order]
   end
 
   def update
+    @order = current_user.order
   end
 
   private
