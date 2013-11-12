@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_writer :current_step
 
   has_many :comments
+  has_one :order
 
   validates :first_name, :last_name, :email, presence: true, if: lambda{ |o| o.current_step == "shipping"}
   validates :address, :city, :state, :zipcode, :country, presence: true
