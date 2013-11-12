@@ -6,7 +6,9 @@ class CreateOrders < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zipcode
+      t.string :country
       t.string :coupon
+      t.integer :user_id
 
       t.timestamps
     end
