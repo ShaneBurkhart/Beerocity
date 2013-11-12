@@ -3,11 +3,31 @@ class OrdersController < ApplicationController
   before_filter :authorize_user!
 
   def new
-    @order = current_user.build_order
+    session[:order_params] ||= {}
+    @order = current_user.build_order session[:order_params]
+    @order.current_step = session[:order_step]
   end
 
   def create
-    @order = current_user.build_order params[:order]
+    session[:order_params].deep_merge!(params[:order]) if params[:order]
+    @order = current_user.build_order session[:order_params]
+    @order.current_step = session[:order_step]
+    if @order.valid?
+      if params[:back_button]
+        @order.previous_step
+      elsif @order.last_step?
+        @order.save if @order.all_valid?
+      else
+        @order.next_step
+      end
+      session[:order_step] = @order.current_step
+    end
+    if @order.new_record?
+      render "new"
+    else
+      session[:order_step] = session[:order_params] = nil
+      redirect_to content_path, flash: {notice: "You are successfully signed up!"}
+    end
   end
 
   def update

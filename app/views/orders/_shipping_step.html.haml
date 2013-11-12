@@ -1,0 +1,52 @@
+- content_for :title, "Order"
+
+.content.container
+  %h2 Order Form
+  .row
+    .span6
+      = simple_form_for(@order, :url => user_order_path, :html => {:class => 'card_form form-vertical' }) do |f|
+        = f.error_notification
+        = display_base_errors @order
+
+        %h3 Shipping Information
+        .row-fluid
+          .span12
+            = f.input :address, input_html: {class: "input-block-level"}
+        .row-fluid
+          .span4
+            = f.input :city, input_html: {class: "input-block-level"}
+          .span4
+            = f.input :state, input_html: {class: "input-block-level"}
+          .span4
+            = f.input :zipcode, input_html: {class: "input-block-level"}, label: "Postal Code"
+
+        %br
+
+        .row-fluid
+          .span12
+            = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
+
+    .span6.text-right
+      .row-fluid
+        .span9.offset3
+          %h3 When We Ship
+          %p We ship the third Monday of every month so you get it before the weekend.
+          %p Your card won't be charged until we ship.
+          %p Happy brewing!
+          %hr
+
+      .row-fluid
+        .span9.offset3
+          %h3
+            %i.fa.fa-lock
+            Your information is secure!
+          %p We won't give your credit card or personal information to anyone for any reason.  You can trust that all of your information is secure.
+          %hr
+
+      .row-fluid
+        .span9.offset3
+          %h3 Questions?
+          %p
+            Feel free to contact us with any questions you may have.  Simply click
+            = link_to "here", contact_path
+            t

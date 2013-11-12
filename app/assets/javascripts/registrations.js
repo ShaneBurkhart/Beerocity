@@ -1,4 +1,4 @@
-$('.registrations').ready(function() {
+$('.card_form').ready(function() {
   $.externalScript('https://js.stripe.com/v1/').done(function(script, textStatus) {
       Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
       var subscription = {
@@ -26,7 +26,7 @@ $('.registrations').ready(function() {
         },
         handleStripeResponse: function(status, response) {
           if (status === 200) {
-            $('#user_stripe_token').val(response.id)
+            $('#order_stripe_token').val(response.id)
             $('.card_form')[0].submit()
           } else {
             $('#stripe_error').text(response.error.message).show();

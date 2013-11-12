@@ -3,10 +3,9 @@
   = tag :meta, :name => "stripe-key", content: ENV["STRIPE_PUBLIC_KEY"]
 
 .content.container
-  %h2 Sign Up
+  %h2 Create an account
   .row
     .span6
-      %h3 Personal Information
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f|
         = hidden_field_tag :plan, "basic"
         = f.error_notification
@@ -30,29 +29,6 @@
             = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
 
     .span6.text-right
-      .row-fluid
-        .span9.offset3
-          %h2 Price
-          %p
-            %span.dollar-desc 5 Gallon Malt Extract Beer Kit:
-            %span $35
-          %p
-            %span.dollar-desc Shipping:
-            %span $15
-          %hr
-          %p.lead
-            Total per month: $50
-          %hr
-
-      .row-fluid
-        .span9.offset3
-          %h3 What's Included
-          %p A quality 5 gallon malt extract beer kit every month.
-          %p We ship the third Monday of every month so you get it before the weekend.
-          %p Your card won't be charged until we ship.
-          %p Happy brewing!
-          %hr
-
       .row-fluid
         .span9.offset3
           %h3

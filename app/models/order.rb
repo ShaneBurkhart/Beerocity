@@ -3,9 +3,14 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :stripe_token, :address, :city, :state, :zipcode, :country, presence: true
+  validates :address, :city, :state, :zipcode, :country, presence: true, if: lambda{|o| o.current_step == "shipping"}
+  validates :stripe_token, presence: true, if: lambda{|o| o.current_step == "payment"}
+
+  attr_accessor :current_step
 
   before_save :update_stripe
+  before_validation :country_usa
+
 
   def update_stripe
     return if self.has_role? :admin
@@ -39,5 +44,41 @@ class Order < ActiveRecord::Base
       false
   end
 
+  def last_step?
+    self.current_step == steps.last
+  end
+
+  def first_step?
+    self.current_step == steps.first
+  end
+
+  def next_step
+    self.current_step = steps[steps.index(self.current_step) + 1]
+  end
+
+  def previous_step
+    self.current_step = steps[steps.index(self.current_step) - 1]
+  end
+
+  def current_step
+    @current_step || steps.first
+  end
+
+  def all_valid?
+    steps.all? do |step|
+      self.current_step = step
+      valid?
+    end
+  end
+
+  private
+
+    def steps
+      %w[shipping payment confirmation]
+    end
+
+    def country_usa
+      self.country = "USA"
+    end
 
 end
