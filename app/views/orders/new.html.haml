@@ -7,7 +7,7 @@
   #stripe_error.alert.alert-error{:style => "display:none"}
   .row
     .span6
-      = simple_form_for(@order, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'card_form form-vertical' }) do |f|
+      = simple_form_for(@order, :url => user_order_path, :html => {:class => 'card_form form-vertical' }) do |f|
         = f.error_notification
         = display_base_errors @order
 
