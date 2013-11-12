@@ -12,10 +12,11 @@ class OrdersController < ApplicationController
     session[:order_params].deep_merge!(params[:order]) if params[:order]
     @order = current_user.build_order session[:order_params]
     @order.current_step = session[:order_step]
-    if @order.valid?
-      if params[:back_button]
-        @order.previous_step
-      elsif @order.last_step?
+    if params[:back_button]
+      @order.previous_step
+    end
+    if @order.valid? && !params[:back_button]
+      if @order.last_step?
         @order.save if @order.all_valid?
       else
         @order.next_step

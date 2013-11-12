@@ -1,9 +1,11 @@
 - content_for :title, "Order"
 
 .content.container
-  %h2 Order Form
   .row
     .span6
+      %h3 Order Progress
+      .progress
+        .bar{ style: "width: #{@order.progress}%" }
       = simple_form_for(@order, :url => user_order_path, :html => {:class => 'card_form form-vertical' }) do |f|
         = f.error_notification
         = display_base_errors @order
@@ -24,9 +26,23 @@
 
         .row-fluid
           .span12
-            = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
+            = f.button :submit, 'Continue', :class => "btn btn-info btn-large btn-block"
 
     .span6.text-right
+      .row-fluid
+        .span9.offset3
+          %h2 Price
+          %p
+            %span.dollar-desc 5 Gallon Malt Extract Beer Kit:
+            %span $35
+          %p
+            %span.dollar-desc Shipping:
+            %span $15
+          %hr
+          %p.lead
+            Total per month: $50
+          %hr
+
       .row-fluid
         .span9.offset3
           %h3 When We Ship

@@ -33,8 +33,10 @@
 
         = f.hidden_field :stripe_token
         .row-fluid
-          .span12
-            = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
+          .span3
+            = f.submit "Back", name: :back_button, :class => "btn btn-danger btn-large btn-block"
+          .span9
+            = f.button :submit, 'Sign Up', :class => "btn btn-info btn-large btn-block"
 
     .span6.text-right
       .row-fluid

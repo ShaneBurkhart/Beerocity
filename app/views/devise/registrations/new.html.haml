@@ -26,9 +26,28 @@
 
         .row-fluid
           .span12
-            = f.button :submit, 'Sign Up', :class => "btn btn-primary btn-large btn-block"
+            = f.button :submit, 'Sign Up', :class => "btn btn-info btn-large btn-block"
+            %br
+            %p
+              Already done this?
+              = link_to "Sign In", new_user_session_path
+
 
     .span6.text-right
+      .row-fluid
+        .span9.offset3
+          %h2 Price
+          %p
+            %span.dollar-desc 5 Gallon Malt Extract Beer Kit:
+            %span $35
+          %p
+            %span.dollar-desc Shipping:
+            %span $15
+          %hr
+          %p.lead
+            Total per month: $50
+          %hr
+
       .row-fluid
         .span9.offset3
           %h3

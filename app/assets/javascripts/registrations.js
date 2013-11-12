@@ -1,9 +1,17 @@
 $('.card_form').ready(function() {
+  $("form input[type=submit]").click(function() {
+      $("input[type=submit]", $(this).parents("form")).removeAttr("clicked");
+      $(this).attr("clicked", "true");
+  });
   $.externalScript('https://js.stripe.com/v1/').done(function(script, textStatus) {
       Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
       var subscription = {
         setupForm: function() {
           return $('.card_form').submit(function() {
+            var val = $("input[type=submit][clicked=true]").val();
+            console.log(val);
+            if(val == "Back")
+              return true;
             $('input[type=submit]').prop('disabled', true);
             if ($('#card_number').length) {
               subscription.processCard();

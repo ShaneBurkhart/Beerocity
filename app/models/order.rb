@@ -73,7 +73,7 @@ class Order < ActiveRecord::Base
   end
 
   def progress
-    steps.index(self.current_step).to_f / steps.length * 100
+    (steps.index(self.current_step) + 1).to_f / (steps.length + 1) * 100
   end
 
   private
