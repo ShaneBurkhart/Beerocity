@@ -1,1 +1,55 @@
-Confiming
+- content_for :title, "Order"
+
+.content.container
+  %h2 Confirm Your Order
+  .row
+    .span6
+      %br
+      %h3 Shipping Address
+      %p= @order.address
+      %p= "#{@order.city}, #{@order.state}, #{@order.zipcode}"
+      %br
+
+      = simple_form_for(@order, :url => user_order_path, :html => {:class => 'card_form form-vertical' }) do |f|
+        .row-fluid
+          .span12
+            = f.button :submit, 'Confirm Your Order', :class => "btn btn-primary btn-large btn-block"
+
+    .span6.text-right
+      .row-fluid
+        .span9.offset3
+          %h2 Price
+          %p
+            %span.dollar-desc 5 Gallon Malt Extract Beer Kit:
+            %span $35
+          %p
+            %span.dollar-desc Shipping:
+            %span $15
+          %hr
+          %p.lead
+            Total per month: $50
+          %hr
+
+      .row-fluid
+        .span9.offset3
+          %h3 What's Included
+          %p A quality 5 gallon malt extract beer kit every month.
+          %p We ship the third Monday of every month so you get it before the weekend.
+          %p Your card won't be charged until we ship.
+          %p Happy brewing!
+          %hr
+
+      .row-fluid
+        .span9.offset3
+          %h3
+            %i.fa.fa-lock
+            Your information is secure!
+          %p We won't give your credit card or personal information to anyone for any reason.  You can trust that all of your information is secure.
+          %hr
+
+      .row-fluid
+        .span9.offset3
+          %h3 Questions?
+          %p
+            Feel free to contact us with any questions you may have.  Simply click
+            = link_to "here", contact_path

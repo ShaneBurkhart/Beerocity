@@ -1,27 +1,28 @@
 class Order < ActiveRecord::Base
-  attr_accessible :address, :city, :coupon, :state, :stripe_token, :zipcode, :country
+  attr_accessible :address, :city, :coupon, :state, :zipcode,
+    :country, :last_4_digits, :customer_id, :stripe_token
 
   belongs_to :user
 
   validates :address, :city, :state, :zipcode, :country, presence: true, if: lambda{|o| o.current_step == "shipping"}
   validates :stripe_token, presence: true, if: lambda{|o| o.current_step == "payment"}
 
-  attr_accessor :current_step
+  attr_accessor :current_step, :stripe_token
 
   before_save :update_stripe
   before_validation :country_usa
 
 
   def update_stripe
-    return if self.has_role? :admin
-    return if email.include?('@example.com') and not Rails.env.production?
+    return if self.user.has_role? :admin
+    return if self.user.email.include?('@example.com') and not Rails.env.production?
     if customer_id.nil?
       if !stripe_token.present?
         raise "Stripe token not present. Can't create account."
       end
         customer = Stripe::Customer.create(
-          :email => email,
-          :description => full_name,
+          :email => self.user.email,
+          :description => self.user.full_name,
           :card => stripe_token
         )
     else
@@ -74,7 +75,7 @@ class Order < ActiveRecord::Base
   private
 
     def steps
-      %w[shipping payment confirmation]
+      %w[shipping payment]
     end
 
     def country_usa

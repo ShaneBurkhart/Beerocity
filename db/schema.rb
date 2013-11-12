@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20131112044707) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "stripe_token"
     t.string   "address"
     t.string   "city"
     t.string   "state"
@@ -30,8 +29,10 @@ ActiveRecord::Schema.define(:version => 20131112044707) do
     t.string   "country"
     t.string   "coupon"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "customer_id"
+    t.string   "last_4_digits"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "recipes", :force => true do |t|
