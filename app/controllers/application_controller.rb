@@ -29,8 +29,9 @@ class ApplicationController < ActionController::Base
   private
 
     def verify_order!
+      return unless current_user
       return unless params[:controller] != "orders" && (params[:action] != "create" || params[:action] != "new")
-      return if current_user.has_role? :admin
+      return if current_user.has_role?(:admin)
       redirect_to new_user_order_path, flash: {error: "You need to finish ordering."} unless current_user.order
     end
 
