@@ -7,6 +7,7 @@ class Ability
       can :manage, :all
     else
       can :view, :basic if user.has_role? :basic
+      can :manage, :order if user.has_role? :basic
     end
   end
 end
