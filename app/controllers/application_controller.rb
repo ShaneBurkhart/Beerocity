@@ -7,13 +7,17 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    case current_user.roles.first.name
-      when 'admin'
-        users_path
-      when 'basic'
-        content_path
-      else
-        root_path
+    if !resource.order
+      new_user_order_path
+    else
+      case current_user.roles.first.name
+        when 'admin'
+          users_path
+        when 'basic'
+          content_path
+        else
+          root_path
+      end
     end
   end
 
@@ -30,6 +34,7 @@ class ApplicationController < ActionController::Base
 
     def verify_order!
       return unless current_user
+      return if params[:controller].starts_with? "devise"
       return unless params[:controller] != "orders" && (params[:action] != "create" || params[:action] != "new")
       return if current_user.has_role?(:admin)
       redirect_to new_user_order_path, flash: {error: "You need to finish ordering."} unless current_user.order
