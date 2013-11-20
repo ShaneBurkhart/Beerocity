@@ -3,9 +3,8 @@
   - unless current_user
     %li
       = nav_link 'Pricing', new_user_registration_path
-  - else
-    %li
-      = nav_link 'Blog', 'http://blog.homebrewster.com'
+  %li
+    = nav_link 'Blog', 'http://blog.homebrewster.com'
 
   %li
     = nav_link 'FAQ', faq_path
@@ -25,7 +24,7 @@
       = nav_link 'Logout', destroy_user_session_path, class: "discrete", :method=>'delete'
     %li
       %strong
-        = link_to "This Month's Recipe!", content_path, class: "btn btn-info btn-eye-catcher"
+        = link_to "Next Month's Recipe!", content_path, class: "btn btn-info btn-eye-catcher"
   - else
     %li
       = nav_link 'Login', new_user_session_path, class: "discrete"
