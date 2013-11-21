@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def sexy_title(title)
-    base = "Beer Kit of the Month | HomeBrewster"
+    base = "Beer Kit of the Season | HomeBrewster"
     !title.blank? ?  "#{title} | #{base}".html_safe : base.html_safe
   end
 
